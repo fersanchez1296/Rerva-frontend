@@ -1,0 +1,330 @@
+#root {
+  max-width: 100vw;
+  height: 100vh;
+  padding: 0 auto;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                 card styles                                */
+/* -------------------------------------------------------------------------- */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 1rem;
+  transition: transform 0.2s ease;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card .card-image img {
+  width: 7rem;
+  padding: 0.5rem;
+}
+
+.card .card-content {
+  padding: 0;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card .card-content .card-title {
+  font-size: 1.3rem;
+  text-align: center;
+  padding: 0.1rem;
+}
+
+.card .card-reveal {
+  text-align: left;
+  padding: 0.3rem;
+  background-color: #eaeff2;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                floating card                               */
+/* -------------------------------------------------------------------------- */
+.cardcontainer {
+  animation: float 6s ease-in-out infinite;
+  
+}
+.cardf {
+  background: #ccccccee;
+  display: block;
+  width: 100%;
+  height: 400px;
+  position: absolute;
+  bottom: calc(100vh / 4);
+  left: 1rem;
+  border-radius: 3px;
+  perspective: 1000px;
+  transition: all 0.6s ease;
+  animation: shadeanm 6s ease-in-out infinite;
+  animation: opacityanm 0.5s ease;
+  overflow-y: scroll;
+}
+
+.cardcontainer .cardf .close {
+  text-align: right;
+  padding: 0.5rem;
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+@keyframes shadeanm {
+  0% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+  }
+}
+
+@keyframes opacityanm {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                server-error                                */
+/* -------------------------------------------------------------------------- */
+
+.animations-container{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+}
+.animations-container .animation{
+  width: 80%;
+  height: 80%;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                           titles graphic searchs                           */
+/* -------------------------------------------------------------------------- */
+
+.title-container {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 50px;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                          header-nav searchByCards                          */
+/* -------------------------------------------------------------------------- */
+.nav-wrapper ul {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.nav-wrapper ul li {
+  cursor: pointer;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  searchbar                                 */
+/* -------------------------------------------------------------------------- */
+
+.search-input {
+  display: flex;
+  align-items: center;
+  margin-left: 3rem;
+}
+
+.search-input input {
+  flex-grow: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  font-size: 16px;
+  color: #fff;
+}
+
+.search-input button {
+  padding: 8px 10px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 8px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   spiner                                   */
+/* -------------------------------------------------------------------------- */
+
+.spiner {
+  margin-top: -13rem;
+  margin-left: -3rem;
+  margin-right: -2.5rem;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                    mapa                                    */
+/* -------------------------------------------------------------------------- */
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  pointer-events: all;
+}
+.wrapper-map {
+  width: 100%;
+  height: 100%;
+}
+
+svg.map {
+  display: block;
+  width: 100%;
+  height: 100%;
+  stroke: rgb(255, 255, 255);
+  stroke-width: 0.05px;
+  fill: #bdbdbdbb;
+}
+
+svg.map .country:hover {
+  stroke: black;
+  stroke-width: 0.05px;
+  cursor: pointer;
+  fill: #4caf50;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                media queries                               */
+/* -------------------------------------------------------------------------- */
+
+/* Estilos para dispositivos móviles */
+@media only screen and (max-width: 767px) {
+  /* Estilos específicos para dispositivos con un ancho máximo de 767px */
+  .wrapper {
+    justify-content: space-between;
+  }
+
+  .cardf {
+    width: 100%;
+  }
+}
+
+/* Estilos para tabletas */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  /* Estilos específicos para dispositivos con un ancho mínimo de 768px y un ancho máximo de 1023px */
+  .card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 01fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      ". . "
+      ". . ";
+    gap: 1rem;
+  }
+  .card {
+    margin-bottom: 1rem;
+  }
+
+  .wrapper {
+    justify-content: space-between;
+  }
+
+  .cardf {
+    width: 50%;
+  }
+}
+
+/* Estilos para dispositivos de escritorio */
+@media only screen and (min-width: 1024px) {
+  /* Estilos específicos para dispositivos con un ancho mínimo de 1024px */
+  .card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 01fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      ". . ."
+      ". . ."
+      ". . .";
+    gap: 1rem;
+  }
+  .card {
+    margin-bottom: 1rem;
+  }
+
+  .wrapper {
+    justify-content: space-between;
+  }
+
+  .cardf {
+    width: 50%;
+  }
+}
+
+/* Estilos para dispositivos grandes */
+@media only screen and (min-width: 1200px) {
+  /* Estilos específicos para dispositivos con un ancho mínimo de 1200px */
+}
+
+/* Estilos para pantallas con orientación horizontal */
+@media only screen and (orientation: landscape) {
+  /* Estilos específicos para pantallas con orientación horizontal */
+}
