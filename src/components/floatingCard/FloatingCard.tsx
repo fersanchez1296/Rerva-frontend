@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { IconButton } from "@mui/material";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-export const FloatingCard = ({ handleOpenFloatingCard, dataC } : any) => {
+export const FloatingCard = ({ handleOpenFloatingCard, dataC,countryName } : any) => {
   const groupedData = dataC.reduce((result : any, el : any) => {
     const territorioAnalizado = el["territorio analizado"];
     if (!result[territorioAnalizado]) {
@@ -19,6 +19,7 @@ export const FloatingCard = ({ handleOpenFloatingCard, dataC } : any) => {
     <div className="cardcontainer">
       <div className="cardf">
         <div className="close">
+          <h3>{countryName}</h3>
           <IconButton
             color="primary"
             aria-label="close floating card"

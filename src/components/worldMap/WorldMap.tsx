@@ -16,6 +16,7 @@ export const WorldMap = ({ data, handleChange, countriesData }: Props) => {
   const dimensions = useResizeObserver(wrapperRef);
   const [openFloatingCard, setOpenFloatingCard] = useState(false);
   const [dataForEachCountry, setDataForEachCountry] = useState([]);
+  const [countryName, setCountryName] = useState("")
   const minScaleToShowLabels = 0; // Ajusta este valor según tus necesidades
   const minAreaToShowLabel = 10; // Ajusta este valor según tus necesidades
 
@@ -36,8 +37,6 @@ export const WorldMap = ({ data, handleChange, countriesData }: Props) => {
   };
 
   useEffect(() => {
-    // use resized dimensions
-    // but fall back to getBoundingClientRect if no dimensions yet.
     const { width, height } = dimensions ?? {
       width: wrapperRef.current?.getBoundingClientRect().width || 0,
       height: wrapperRef.current?.getBoundingClientRect().height || 0,
@@ -63,17 +62,14 @@ export const WorldMap = ({ data, handleChange, countriesData }: Props) => {
       .data(data.features)
       .join("path")
       .on("click", (event, feature: any) => {
-        console.log(event);
-
+        const { name_es } = feature.properties;
+        setCountryName(name_es)
         setOpenFloatingCard(true);
         getData(feature.properties.name_es);
       })
       .on("mouseover", (event, name: any) => {
-        console.log(event);
-
         const { name_es } = name.properties;
-        const { NAME } = name.properties;
-        handleChange(NAME, name_es);
+        handleChange(name_es);
       });
 
     countries
@@ -106,7 +102,7 @@ export const WorldMap = ({ data, handleChange, countriesData }: Props) => {
       .attr("text-anchor", "middle")
       .attr("dy", -0.5) // Desplazamiento vertical ajustado para evitar superposición
       .attr("dx", 1.5)
-      .attr("font-size", 1) // Ajusta el tamaño de fuente según tus necesidades
+      .attr("font-size", 3) // Ajusta el tamaño de fuente según tus necesidades
       .attr("opacity", () => (shouldShowLabels(1) ? 1 : 0)); // Inicialmente, establece la opacidad en 0 para ocultar los nombres
 
     // Agrega la función para determinar si el nivel de zoom es suficiente para mostrar las etiquetas
@@ -169,6 +165,7 @@ export const WorldMap = ({ data, handleChange, countriesData }: Props) => {
       </div>
       {openFloatingCard ? (
         <FloatingCard
+        countryName={countryName}
           handleOpenFloatingCard={handleOpenFloatingCard}
           dataC={dataForEachCountry}
         ></FloatingCard>
