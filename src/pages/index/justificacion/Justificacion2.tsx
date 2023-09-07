@@ -8,7 +8,7 @@ interface Props {
   anim : object
 }
 
-export const Objetivo = ({text, anim} : Props) => {
+export const Justificacion2 = ({text, anim} : Props) => {
   return (
     <Grid container spacing={2} className="slider-container">
       <Grid xs={12} md={5}>

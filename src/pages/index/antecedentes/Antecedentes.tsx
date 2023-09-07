@@ -1,29 +1,33 @@
 import { Reveal } from "../../../components/reveal/Reveal";
-import know1 from "../../../assets/animations/knwoledge/know1.json";
+import slideleft from "../../../assets/animations/knwoledge/slide-left.json";
 import Lottie from "lottie-react";
-export const Antecedentes = () => {
+import Grid from "@mui/material/Unstable_Grid2";
+
+interface Props {
+  text : string;
+  anim : object
+}
+
+export const Antecedentes = ({text, anim} : Props) => {
   return (
-    <div className="antecedentes">
-        <h4>Antecedentes</h4>
-      <div className="p1ant">
-        <Reveal nameClass="p1ant-anim">
-          <Lottie animationData={know1} className="anim" />
-        </Reveal>
-        <Reveal nameClass="p1ant-p">
+    <Grid container spacing={2} className="slider-container">
+      <Grid xs={12} md={5}>
+        <Reveal nameClass="slider-text">
           <p>
-            La creación y difusión del conocimiento son actividades
-            fundamentales en las rutas de desarrollo de las regiones, más en un
-            contexto de globalización y de creciente importancia de la ciencia y
-            la tecnología para enfrentar problemas sociales, económicos y
-            ambientales. Innovación y desarrollo científico se han convertido en
-            factores explicativos para entender la diferenciación entre las
-            rutas de desarrollo regional, la formación de polos de innovación,
-            la concentración de clases creativas en distintos lugares, y en
-            última instancia, para explicar la diferenciación en las rutas de
-            desarrollo que siguen los países.
+            {text}
           </p>
         </Reveal>
-      </div>
-    </div>
+      </Grid>
+      <Grid xs={12}  md={5}>
+        <Reveal nameClass="slider-anim">
+          <Lottie animationData={anim} />
+        </Reveal>
+      </Grid>
+      <Grid xs={12}  md={6}>
+        <Reveal>
+          <Lottie animationData={slideleft} style={{width : "50px"}}/>
+        </Reveal>
+      </Grid>
+    </Grid>
   );
 };
